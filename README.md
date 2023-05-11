@@ -1,2 +1,2 @@
 # DevOps-with-Docker
-University of Helsinki course 2023
+course in University of Helsinki 2023
