@@ -1,0 +1,19 @@
+PS C:\Users\pette> docker images
+REPOSITORY                          TAG       IMAGE ID       CREATED       SIZE
+fav_distro                          bionic    97ba4bbc97fc   6 days ago    63.2MB
+ubuntu                              18.04     97ba4bbc97fc   6 days ago    63.2MB
+ubuntu                              bionic    97ba4bbc97fc   6 days ago    63.2MB
+ubuntu                              latest    3b418d7b466a   3 weeks ago   77.8MB
+devopsdockeruh/simple-web-service   ubuntu    4e3362e907d5   2 years ago   83MB
+devopsdockeruh/simple-web-service   alpine    fd312adc88e0   2 years ago   15.7MB
+PS C:\Users\pette> docker run fd
+
+PS C:\Users\pette> docker container ls
+CONTAINER ID   IMAGE     COMMAND                 CREATED          STATUS          PORTS     NAMES
+5031243e7d81   fd        "/usr/src/app/server"   27 seconds ago   Up 27 seconds             goofy_taussig
+PS C:\Users\pette> docker exec -it 50 sh
+/usr/src/app # tail -f ./text.log
+2023-05-18 13:09:14 +0000 UTC
+2023-05-18 13:09:16 +0000 UTC
+Secret message is: 'You can find the source code here: https://github.com/docker-hy'
+2023-05-18 13:09:18 +0000 UTC

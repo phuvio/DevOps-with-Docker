@@ -1,0 +1,7 @@
+Commands in other terminal:
+PS C:\Users\pette> docker container ls
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS     NAMES
+c45fcc030647   ubuntu    "sh -c 'while true; …"   12 seconds ago   Up 11 seconds             hungry_bell
+PS C:\Users\pette> docker exec -it hungry_bell bash
+root@c45fcc030647:/# apt-get update
+root@c45fcc030647:/# apt-get -y install curl
