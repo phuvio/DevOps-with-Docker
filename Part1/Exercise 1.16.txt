@@ -1,0 +1,11 @@
+First I tried to create docker image from projects that I had created earlier. But it was harder than expected. I didn't know how to integrate Postgre into a docker image and with the one project that didn't use database there was a problem with pygame. So I ended up doing a very simple one page html-app.
+
+I created a GitHub repo, then I created Dockerfile and finally uploaded the image to Docker Hub.
+
+First I tried to deploy it to Heroku, but I had already an account with few projects there. There was no way to add new projects. 
+
+Then I tried to deploy the app to Fly.io. I was able to deploy the app, but somehow it didn't connect.
+
+Lastly I deployed to Render and finally everything worked fine. The deployment was actually very easy. I connected Render with my GitHub account, selected correct repo and let Render do it magic.
+
+https://todo-app-slfp.onrender.com/
