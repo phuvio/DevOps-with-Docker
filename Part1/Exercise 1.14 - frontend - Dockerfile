@@ -1,0 +1,17 @@
+# We need java 8 I found this from Docker Hub
+FROM node:16.20
+
+EXPOSE 5000
+
+WORKDIR /usr/src/app
+
+# Copy all of the source code
+COPY . .
+
+ENV REACT_APP_BACKEND_URL=http://127.0.0.1:8080
+
+RUN npm install
+RUN npm run build
+RUN npm install -g serve
+
+CMD ["serve", "-s", "-l", "5000", "build"]
