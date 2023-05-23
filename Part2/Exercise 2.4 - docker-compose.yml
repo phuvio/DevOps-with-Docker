@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  
+  example-frontend:
+    build: ./example-frontend
+    ports: 
+      - 5000:5000
+  
+  example-backend:
+    build: ./example-backend
+    ports:
+      - 8080:8080
+    environment:
+      - REDIS_HOST=redis
+
+  redis:
+    image: redis
+    command: redis-server
+    restart: unless-stopped
