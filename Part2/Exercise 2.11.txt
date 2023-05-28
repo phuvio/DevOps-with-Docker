@@ -1,0 +1,2 @@
+I dockerized a Flask app which use Postgresql. I created a Dockerfile and docker-compose.yml files. In docker-compose file I added Postgre-database which is bind mounted. 
+

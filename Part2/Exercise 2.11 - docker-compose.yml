@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  
+  web:
+    build: .
+    ports: 
+      - 8000:8000
+    environment:
+      - REDIS_HOST=redis
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=example
+      - POSTGRES_HOST=db
+      - POSTGRES_DATABASE=postgres
+    depends_on:
+      - db
+  
+  db:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: example
+      POSTGRES_HOST: db
+      POSTGRES_DATABASE: postgres
+    volumes:
+      - ./data:/var/lib/postgresql/data
+
+volumes:
+  database:
