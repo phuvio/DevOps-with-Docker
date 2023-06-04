@@ -1,0 +1,26 @@
+FROM node:alpine3.16 as build
+
+WORKDIR /usr/src/app
+
+COPY . .
+COPY package*.json ./
+
+RUN npm audit fix --force && \
+    npm run build
+
+FROM node:alpine3.16
+
+WORKDIR /usc/src/app
+
+COPY --from=build /usr/src/app/build ./build
+
+ENV REACT_APP_BACKEND_URL=http://localhost/api
+
+RUN npm install -g serve && \
+    adduser -D appuser
+
+USER appuser
+
+EXPOSE 5000
+
+ENTRYPOINT ["serve", "-s", "-l", "5000", "build"]

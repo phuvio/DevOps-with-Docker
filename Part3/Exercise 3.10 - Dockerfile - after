@@ -1,0 +1,27 @@
+FROM python:3.9-slim-buster as build
+
+WORKDIR /usr/src/app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY app.py .
+COPY templates templates/
+
+FROM python:3.9-slim-buster
+
+WORKDIR /usr/src/app
+
+COPY --from=build /usr/src/app /usr/src/app/
+
+RUN pip install --no-cache-dir Flask && \
+    groupadd -r appuser && useradd -r -g appuser appuser
+
+USER appuser
+
+EXPOSE 5000
+
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
+
+CMD ["flask", "run"]

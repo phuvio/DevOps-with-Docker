@@ -1,0 +1,22 @@
+FROM golang:1.20-alpine as build
+
+WORKDIR /usr/src/app
+
+COPY . .
+
+RUN go build && adduser -D appuser
+
+FROM scratch
+
+WORKDIR /usr/src/app
+
+COPY --from=build /usr/src/app/server .
+
+ENV REQUEST_ORIGIN=http://localhost
+
+COPY --from=0 /etc/passwd /etc/passwd
+USER appuser
+
+EXPOSE 8080
+
+ENTRYPOINT ["./server", "REQUEST_ORIGIN"]
